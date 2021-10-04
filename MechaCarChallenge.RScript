@@ -1,5 +1,6 @@
-# load dplyr library
+# load dplyr and tidyverselibrary
 library(dplyr)
+
 
 # read in MechaCar_mpg csv file to a dataset
 mpg_table <- read.csv("MechaCar_mpg.csv", check.names=F, stringsAsFactors = F)
@@ -9,5 +10,14 @@ mpg_regression <- lm(mpg~vehicle_length + vehicle_weight + spoiler_angle + groun
 
 #summary regression
 summary(mpg_regression)
+
+#read in Suspension_coil csv file to a dataset
+suspension_table <- read.csv("Suspension_Coil.csv", check.names=F, stringsAsFactors = F)
+
+#summarize PSI column
+suspension_summary <- summarize(suspension_table, Mean=mean(PSI), Median=median(PSI), Variance=var(PSI), SD=sd(PSI))
+
+#create lot summary dataset grouped by lot and summary information for PSI column
+lot_summary <- suspension_table %>% group_by(Manufacturing_Lot) %>% summarize(Mean=mean(PSI), Median=median(PSI), Variance=var(PSI), SD=sd(PSI))
 
 
