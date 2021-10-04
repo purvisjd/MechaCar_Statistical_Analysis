@@ -18,4 +18,24 @@ The summary statistics grouped by manufacturing lot produced the following resul
 
 It has been determined that the design specifications for the MechaCar suspension coils dictate that the variance of the coils must not exceed 100 PSI.  If we look at the overall summary for the suspension coils dataset, this requirement is met (Variance = 62.29).  However, when the coils were grouped by manufacturing lot, a concerning result was discovered with Manufacturing Lot 3 showing a variance that well exceeds the design specifications (Variance = 170.286).  Further analysis will be required on Manufacutring Lot 3 to isolate the specific coils that are not within design specification, identify the root cause for the unacceptable variance, and make the necessary changes before those coils can be placed into production.
 
+## T-Tests on Suspension Coils
+For the third statistical analysis performed on the given data, four separate t-tests were performed to analyize the PSI data and compare it to the population mean.  The first t-test was performed across all manufacturing lots to determine if the PSI was statistically different from a population mean of 1500 PSI.  
+![t-test for all lots](https://user-images.githubusercontent.com/85641017/135920018-49080833-3b9c-409d-9b78-ab781610b7a1.png)
+
+This test shows a p-value of .06028 which would be higher than the anticipated .05% significance rate.  Therefore, there is not sufficient evidence to reject the null hypothesis in this scenario and it can be determined that the true mean is not statistically significantly different from 15000. 
+
+The second t-test was performed on a subset focused on only those coils associated with manufacturing lot 1.  
+![t-test for lot 1](https://user-images.githubusercontent.com/85641017/135921034-40f305be-1a14-4a27-937b-15870b206972.png)
+
+Similar to the t-test for the whole dataset, the p-value for this test shows a value of 1 thereby also indicating that there is not sufficient evidence to reject the null hypothesis and that the true mean is not statistically different from 1500.
+
+The third t-test was performed on a subset focused on only those coils associated with manufacturing lot 2.
+![t-test for lot 2](https://user-images.githubusercontent.com/85641017/135922372-26d7aaa6-ecdf-4586-9049-b2ba93d13582.png)
+
+While the p-value for this test is lower than the previous two, it also shows a score that is higher than the anticipated statistical significance of .05%.  As with the previous 2 tests, the null hypothesis cannot be rejected in this case and it can be assumed that the true mean is not statistically different from 1500.
+
+The fourth t-test was performed on a subset focused only on those coils associated with manufacturing lot 3.
+![t-test for lot 3](https://user-images.githubusercontent.com/85641017/135922608-90dd39e9-344a-408d-9100-e18be8d27768.png)
+
+This test diverges from the previous three due to the fact that the p-value is lower than the anticipated statistical significance of .05%.  Unlike the previous tests, the null hypothesis would be rejected and the alternative hypothesis of "true mean is not equal to 1500" would be accepted.
 
