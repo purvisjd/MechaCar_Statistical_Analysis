@@ -1,0 +1,34 @@
+# load dplyr and tidyverselibrary
+library(dplyr)
+
+
+# read in MechaCar_mpg csv file to a dataset
+mpg_table <- read.csv("MechaCar_mpg.csv", check.names=F, stringsAsFactors = F)
+
+#perform linear regression on all factors of dataset
+mpg_regression <- lm(mpg~vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AWD, data=mpg_table)
+
+#summary regression
+summary(mpg_regression)
+
+#read in Suspension_coil csv file to a dataset
+suspension_table <- read.csv("Suspension_Coil.csv", check.names=F, stringsAsFactors = F)
+
+#summarize PSI column
+suspension_summary <- summarize(suspension_table, Mean=mean(PSI), Median=median(PSI), Variance=var(PSI), SD=sd(PSI))
+
+#create lot summary dataset grouped by lot and summary information for PSI column
+lot_summary <- suspension_table %>% group_by(Manufacturing_Lot) %>% summarize(Mean=mean(PSI), Median=median(PSI), Variance=var(PSI), SD=sd(PSI))
+
+#t-test to determine if PSI across all lots statistically different from mean of 1500
+t.test(suspension_table$PSI, mu=1500)
+
+#t-test to determine if PSI for Lot 1 statistically different from mean of 1500
+t.test(subset(suspension_table, Manufacturing_Lot == "Lot1")$PSI, mu=1500)
+
+#t-test to determine if PSI for Lot 2 statistically different from mean of 1500
+t.test(subset(suspension_table, Manufacturing_Lot == "Lot2")$PSI, mu=1500)
+
+#t-test to determine if PSI for Lot 3 statistically different from mean of 1500
+t.test(subset(suspension_table, Manufacturing_Lot == "Lot3")$PSI, mu=1500)
+
